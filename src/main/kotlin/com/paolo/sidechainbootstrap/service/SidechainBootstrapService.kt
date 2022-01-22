@@ -30,6 +30,12 @@ class SidechainBootstrapService(
             proofInfoResult
         )
     }
+
+    fun generateGenesisInfo(genesisInfoInput: GenesisInfoServiceInput): GenesisInfoServiceOutput {
+        val genesisInfoResult = command.generateGenesisInfo(genesisInfoInput.toGeneratorInput())
+
+        return genesisInfoResult.toGenesisServiceOutput()
+    }
 }
 
 data class GenerateConfigServiceInput(
@@ -46,3 +52,35 @@ data class GenerateConfigServiceOutput(
     val vrfKeySeed: VrfKeySeedResult,
     val proofInfoResult: ProofInfoResult
 )
+
+data class GenesisInfoServiceInput(
+    val info: String,
+    val secret: String,
+    val vrfSecret: String
+) {
+    fun toGeneratorInput(): GenesisInfoInput =
+        GenesisInfoInput(
+            info, secret, vrfSecret
+        )
+}
+
+data class GenesisInfoServiceOutput(
+    val scId: String,
+    val scGenesisBlockHex: String,
+    val powData: String,
+    val mcBlockHeight: Int,
+    val mcNetwork: String,
+    val withdrawalEpochLength: Int,
+    val initialCumulativeCommTreeHash: String
+)
+
+fun GenesisInfoOutput.toGenesisServiceOutput(): GenesisInfoServiceOutput =
+    GenesisInfoServiceOutput(
+        scId,
+        scGenesisBlockHex,
+        powData,
+        mcBlockHeight,
+        mcNetwork,
+        withdrawalEpochLength,
+        initialCumulativeCommTreeHash,
+    )
