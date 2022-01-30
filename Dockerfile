@@ -13,4 +13,4 @@ COPY . .
 
 RUN mvn clean install
 
-CMD java -jar /app/target/sidechain-bootstrap-0.0.1-SNAPSHOT.jar
+CMD java -jar /app/target/sc-bootstrap-be.jar
