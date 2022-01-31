@@ -167,4 +167,10 @@
         <finalName>sc-bootstrap-be</finalName>
     </build>
 
+    <scm>
+        <connection>scm:git:https://github.com/paologalligit/sc_bootstrap_be.git</connection>
+        <developerConnection>scm:git:https://github.com/paologalligit/sc_bootstrap_be.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
+
 </project>
