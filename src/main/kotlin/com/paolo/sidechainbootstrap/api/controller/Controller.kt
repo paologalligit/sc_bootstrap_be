@@ -38,7 +38,7 @@ class Controller(
 
 data class GenerateConfigRequest(
     val keySeed: String,
-    val vfrKeySeed: String,
+    val vrfKeySeed: String,
     val maxPks: String,
     val threshold: String,
     val provingKeyPath: String,
@@ -46,7 +46,7 @@ data class GenerateConfigRequest(
 ) {
     fun toServiceInput(): GenerateConfigServiceInput =
         GenerateConfigServiceInput(
-            keySeed, vfrKeySeed, maxPks, threshold, provingKeyPath, verificationKeyPath
+            keySeed, vrfKeySeed, maxPks, threshold, provingKeyPath, verificationKeyPath
         )
 }
 
